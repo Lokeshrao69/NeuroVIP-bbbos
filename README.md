@@ -2,9 +2,7 @@
 
 **NeuroVIP is an interactive portal for blood–brain barrier (BBB) microvessel transcriptomes in mouse models of ischemic stroke, bacterial meningitis and glioblastoma.**
 
-🔗 **Live site:** https://neurovip.bbbos.app
-
-**Supervisor:** Dr. Kavi Devraj, Department of Biological Sciences
+🔗 **Live site:** https://neurovip-bbbos.vercel.app
 
 ---
 
