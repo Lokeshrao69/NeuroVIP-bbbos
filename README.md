@@ -4,8 +4,6 @@
 
 🔗 **Live site:** https://neurovip.bbbos.app
 
-BIO F376 Design Project, BITS Pilani Hyderabad Campus
-**Student:** J Lokesh Rao (2023B1A10829H)
 **Supervisor:** Dr. Kavi Devraj, Department of Biological Sciences
 
 ---
