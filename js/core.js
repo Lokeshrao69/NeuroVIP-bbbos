@@ -174,12 +174,23 @@ dash.calc('concord', {
 
 // ---------- tabs and controls (listen + set attributes only) ----------
 (function () {
-  const TABS = ['overview', 'de', 'gene', 'cross', 'check', 'ml'];
+  const TABS = ['overview', 'de', 'gene', 'cross', 'check', 'ml', 'help'];
   const startTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : null;
   if (startTab) dash.setParams({ tab: startTab });
 
+  const goTab = (t) => { dash.setParams({ tab: t }); dash.setLink(t); window.scrollTo(0, 0); };
   document.querySelectorAll('.bx-tab').forEach((b) =>
-    b.addEventListener('click', () => { dash.setParams({ tab: b.dataset.tab }); dash.setLink(b.dataset.tab); }));
+    b.addEventListener('click', () => goTab(b.dataset.tab)));
+  document.querySelectorAll('[data-goto]').forEach((a) =>
+    a.addEventListener('click', (e) => { e.preventDefault(); goTab(a.dataset.goto); }));
+  document.querySelectorAll('.nv-logo').forEach((a) =>
+    a.addEventListener('click', (e) => { e.preventDefault(); goTab('overview'); }));
+  // header gene search -> Gene search page
+  document.querySelectorAll('#header-search').forEach((inp) => {
+    const go = () => { const v = inp.value.trim(); if (v) { dash.setParams({ gene: v }); goTab('gene'); inp.value = ''; inp.blur(); } };
+    inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+    document.querySelectorAll('#header-search-btn').forEach((b) => b.addEventListener('click', go));
+  });
   document.querySelectorAll('.bx-seg-btn[data-disease]').forEach((b) =>
     b.addEventListener('click', () => dash.setParams({ disease: b.dataset.disease })));
   document.querySelectorAll('.bx-seg-btn[data-lfc]').forEach((b) =>
@@ -201,7 +212,7 @@ dash.calc('concord', {
   document.querySelectorAll('.bx-clickable').forEach((t) =>
     t.addEventListener('click', (e) => {
       const tr = e.target.closest('tr[data-gene]');
-      if (tr) { dash.setParams({ gene: tr.dataset.gene, tab: 'gene' }); dash.setLink('gene'); }
+      if (tr) { dash.setParams({ gene: tr.dataset.gene }); goTab('gene'); }
     }));
 
   dash.onData(() => {

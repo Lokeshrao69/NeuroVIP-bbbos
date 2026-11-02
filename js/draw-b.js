@@ -14,7 +14,7 @@
     const gene = dash.params().gene || 'Selp';
     const rows = geneRows();
     if (!rows.length) { empty(el, `"${gene}" is not significant in any disease (or the symbol was not found).`); return; }
-    const series = [{ key: 'ai', name: 'This pipeline', color: dash.colors[0] }, { key: 'mk', name: 'Classic analysis', color: dash.colors[2] || dash.colors[1] }];
+    const series = [{ key: 'ai', name: 'NeuroVIP pipeline', color: dash.colors[0] }, { key: 'mk', name: 'Classic analysis', color: dash.colors[2] || dash.colors[1] }];
     const data = [];
     for (const dz of BX.ORDER) {
       const r = rows.find((x) => x.disease === dz);
@@ -178,7 +178,7 @@
     if (!BX.status(el, ['concord'])) return;
     el.replaceChildren();
     const rows = dash.data('concord').data;
-    const parts = [{ k: 'both', name: 'Both', color: dash.colors[0] }, { k: 'ai_only', name: 'This pipeline only', color: dash.colors[1] }, { k: 'classic_only', name: 'Classic only', color: dash.colors[3] || dash.colors[2] }];
+    const parts = [{ k: 'both', name: 'Both', color: dash.colors[0] }, { k: 'ai_only', name: 'NeuroVIP pipeline only', color: dash.colors[1] }, { k: 'classic_only', name: 'Classic analysis only', color: dash.colors[3] || dash.colors[2] }];
     const W = Math.max(300, el.clientWidth), rowH = 36, H = rows.length * rowH + 34;
     const svg = BX.svg(el, W, H);
     const lw = BX.textWidth(svg, rows.map((r) => BX.NAMES[r.disease])) + 10;
@@ -231,7 +231,7 @@
     svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(Math.max(3, Math.floor(W / 80))).tickSizeOuter(0)).call(BX.cleanAxis);
     svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSizeOuter(0)).call(BX.cleanAxis);
     svg.append('line').attr('class', 'bx-ref').attr('x1', x(-ext)).attr('y1', y(-ext)).attr('x2', x(ext)).attr('y2', y(ext));
-    svg.append('text').attr('x', (m.l + W - m.r) / 2).attr('y', H - 6).attr('text-anchor', 'middle').text('log2FC, this pipeline');
+    svg.append('text').attr('x', (m.l + W - m.r) / 2).attr('y', H - 6).attr('text-anchor', 'middle').text('log2FC, NeuroVIP pipeline');
     svg.append('text').attr('transform', `translate(12,${(m.t + H - m.b) / 2}) rotate(-90)`).attr('text-anchor', 'middle').text('log2FC, classic analysis');
     svg.append('g').selectAll('circle').data(rows).join('circle').attr('cx', (d) => x(d.a)).attr('cy', (d) => y(d.b)).attr('r', 2.2).attr('fill', dash.colors[0]).attr('fill-opacity', 0.5);
     const tip = BX.tip(el);
@@ -243,8 +243,19 @@
       if (!d || Math.hypot(x(d.a) - mx, y(d.b) - my) > 24) { hl.attr('visibility', 'hidden'); tip.hide(); return; }
       hl.attr('cx', x(d.a)).attr('cy', y(d.b)).attr('visibility', 'visible');
       const k = el.clientWidth / W;
-      tip.show(x(d.a) * k, y(d.b) * k, d.symbol, ['this pipeline ' + BX.fmtFc(d.a), 'classic ' + BX.fmtFc(d.b)]);
+      tip.show(x(d.a) * k, y(d.b) * k, d.symbol, ['NeuroVIP ' + BX.fmtFc(d.a), 'classic ' + BX.fmtFc(d.b)]);
     }).on('pointerleave', () => { hl.attr('visibility', 'hidden'); tip.hide(); });
+  });
+
+  // autocomplete list of gene symbols for the search boxes
+  dash.draw('gene-list', (dl) => {
+    const d = dash.data('deg');
+    if (d.status !== 'ok') { dl.replaceChildren(); return; }
+    if (dl.childElementCount) return;
+    const syms = Array.from(new Set(d.data.map((r) => r.symbol).filter((s) => s && !s.startsWith('ENSMUSG')))).sort();
+    const frag = document.createDocumentFragment();
+    for (const s of syms) { const o = document.createElement('option'); o.value = s; frag.appendChild(o); }
+    dl.appendChild(frag);
   });
 
   // ML

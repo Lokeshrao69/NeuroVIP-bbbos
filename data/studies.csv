@@ -1,4 +1,4 @@
 disease,disease_name,model,tissue,study,geo,n_case,n_control,genes_tested
 stroke,Ischemic stroke,"tMCAO, 24 h, ipsilateral hemisphere",Brain microvessels,"Kestner et al., Front. Neurosci. 2020",GSE131193,3,3,21496
 meningitis,Bacterial meningitis,Haematogenous S. pneumoniae infection,Brain microvessels,"Devraj G et al., Acta Neuropathol. 2020",GSE122952,4,4,22436
-gb,Glioblastoma,Tumour-bearing region vs sham,Brain microvessels,Not in the shared folder,,3,3,31863
+gb,Glioblastoma,Tumour-bearing region vs sham,Brain microvessels,Source study to be added,,3,3,31863
