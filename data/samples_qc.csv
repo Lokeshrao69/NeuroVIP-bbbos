@@ -1,0 +1,21 @@
+run,disease,condition,group,tissue,raw_reads,adapter_pct,short_removed_pct,unique_aligned,unique_pct,assigned_pct
+SRR9054202,stroke,control,"Sham (ipsilateral, 24 h)",Brain microvessels,19204146,9.9,0.04,17005584,88.6,88.7
+SRR9054204,stroke,control,"Sham (ipsilateral, 24 h)",Brain microvessels,21274469,9.7,0.06,18843612,88.6,89.1
+SRR9054206,stroke,control,"Sham (ipsilateral, 24 h)",Brain microvessels,19576549,9.7,0.06,17223117,88.0,88.7
+SRR9054214,stroke,case,"tMCAO (ipsilateral, 24 h)",Brain microvessels,18029864,9.4,0.36,15312206,85.2,88.7
+SRR9054216,stroke,case,"tMCAO (ipsilateral, 24 h)",Brain microvessels,21553144,9.6,0.04,18781444,87.2,89.1
+SRR9054218,stroke,case,"tMCAO (ipsilateral, 24 h)",Brain microvessels,20791870,9.6,0.09,18155401,87.4,89.2
+SRR8244647,meningitis,case,S. pneumoniae infected,Brain microvessels,27170429,9.7,0.22,23086339,85.2,88.5
+SRR8244648,meningitis,case,S. pneumoniae infected,Brain microvessels,28469073,9.6,0.25,24123079,84.9,88.0
+SRR8244649,meningitis,case,S. pneumoniae infected,Brain microvessels,26232315,10.0,0.25,22103564,84.5,88.9
+SRR8244650,meningitis,case,S. pneumoniae infected,Brain microvessels,27560782,10.0,0.26,23135606,84.2,88.4
+SRR8244651,meningitis,control,Healthy,Brain microvessels,28430147,9.7,0.28,24761468,87.3,89.5
+SRR8244652,meningitis,control,Healthy,Brain microvessels,28188129,9.6,0.26,24427773,86.9,89.3
+SRR8244653,meningitis,control,Healthy,Brain microvessels,30709329,10.0,0.27,26946632,88.0,89.9
+SRR8244654,meningitis,control,Healthy,Brain microvessels,27473124,10.1,0.22,23704916,86.5,90.1
+SRR8956364,gb,case,Tumour-bearing region,Brain microvessels,22605504,14.8,1.08,19793271,88.5,47.1
+SRR8956366,gb,case,Tumour-bearing region,Brain microvessels,35732119,15.8,1.81,30972526,88.3,57.2
+SRR8956368,gb,case,Tumour-bearing region,Brain microvessels,28885251,15.1,1.86,25575821,90.2,48.5
+SRR8956372,gb,control,Sham (healthy),Brain microvessels,27490968,14.9,1.84,25154459,93.2,59.8
+SRR8956373,gb,control,Sham (healthy),Brain microvessels,28888920,14.7,1.7,26526019,93.4,67.0
+SRR8956374,gb,control,Sham (healthy),Brain microvessels,20583502,15.1,1.48,18597949,91.7,60.4

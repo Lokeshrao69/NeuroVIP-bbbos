@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBB RNA-seq Explorer: Stroke, Meningitis &amp; Glioblastoma</title>
+<meta name="description" content="Interactive explorer of blood-brain barrier microvessel RNA-seq results in mouse models of ischemic stroke, bacterial meningitis and glioblastoma.">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="dash-root">
+<div class="bx">
+  <header class="bx-head" id="top">
+    <h1 class="bx-title">BBB RNA-seq Explorer: stroke, meningitis and glioblastoma</h1>
+    <p class="bx-take">Brain microvessel transcriptomes from three mouse disease models, processed with one pipeline (FastQC → Trim Galore → STAR → featureCounts → DESeq2). <b data-draw="take-shared" data-source="overlap" data-field="n" data-where="set=all_three">—</b> genes are significantly changed in all three diseases, most of them in the same direction.</p>
+    <nav class="bx-tabs" role="tablist" aria-label="Dashboard pages">
+      <button class="bx-tab" role="tab" data-tab="overview" id="tab-overview">Overview</button>
+      <button class="bx-tab" role="tab" data-tab="de" id="tab-de">Differential expression</button>
+      <button class="bx-tab" role="tab" data-tab="gene" id="tab-gene">Gene lookup</button>
+      <button class="bx-tab" role="tab" data-tab="cross" id="tab-cross">Cross-disease</button>
+      <button class="bx-tab" role="tab" data-tab="check" id="tab-check">Pipeline check</button>
+      <button class="bx-tab" role="tab" data-tab="ml" id="tab-ml">Machine learning</button>
+    </nav>
+  </header>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="bx-page" id="overview" data-page="overview">
+    <div class="bx-tiles">
+      <div class="bx-tile" id="tile-stroke">
+        <div class="bx-tile-label">Ischemic stroke DEGs</div>
+        <div class="bx-tile-num" data-draw="tile" data-source="deg_summary" data-field="n_sig" data-where="disease=stroke">—</div>
+        <div class="bx-tile-sub"><span class="bx-up" data-draw="tile" data-source="deg_summary" data-field="n_up" data-where="disease=stroke">—</span> up · <span class="bx-down" data-draw="tile" data-source="deg_summary" data-field="n_down" data-where="disease=stroke">—</span> down</div>
+      </div>
+      <div class="bx-tile" id="tile-meningitis">
+        <div class="bx-tile-label">Bacterial meningitis DEGs</div>
+        <div class="bx-tile-num" data-draw="tile" data-source="deg_summary" data-field="n_sig" data-where="disease=meningitis">—</div>
+        <div class="bx-tile-sub"><span class="bx-up" data-draw="tile" data-source="deg_summary" data-field="n_up" data-where="disease=meningitis">—</span> up · <span class="bx-down" data-draw="tile" data-source="deg_summary" data-field="n_down" data-where="disease=meningitis">—</span> down</div>
+      </div>
+      <div class="bx-tile" id="tile-gb">
+        <div class="bx-tile-label">Glioblastoma DEGs</div>
+        <div class="bx-tile-num" data-draw="tile" data-source="deg_summary" data-field="n_sig" data-where="disease=gb">—</div>
+        <div class="bx-tile-sub"><span class="bx-up" data-draw="tile" data-source="deg_summary" data-field="n_up" data-where="disease=gb">—</span> up · <span class="bx-down" data-draw="tile" data-source="deg_summary" data-field="n_down" data-where="disease=gb">—</span> down</div>
+      </div>
+      <div class="bx-tile" id="tile-shared">
+        <div class="bx-tile-label">Significant in all three</div>
+        <div class="bx-tile-num" data-draw="tile" data-source="overlap" data-field="n" data-where="set=all_three">—</div>
+        <div class="bx-tile-sub">genes, padj &lt; 0.05 in every disease</div>
+      </div>
+    </div>
+    <p class="bx-note">DEG = differentially expressed gene: DESeq2, case vs matched control within each study, Benjamini–Hochberg adjusted p (padj) &lt; 0.05.</p>
+
+    <div class="bx-card" id="card-studies">
+      <h2 class="bx-card-title">Datasets</h2>
+      <p class="bx-card-note">Each disease comes from a separate study with its own controls, so comparisons are made within a study first.</p>
+      <div class="bx-scroll">
+        <table class="bx-table" data-source="studies" data-row-key="disease">
+          <thead><tr>
+            <th data-field="disease_name">Disease</th>
+            <th data-field="model">Model</th>
+            <th data-field="tissue">Tissue</th>
+            <th data-field="study">Source study</th>
+            <th data-field="geo">GEO</th>
+            <th data-field="n_case" class="bx-num">Cases</th>
+            <th data-field="n_control" class="bx-num">Controls</th>
+            <th data-field="genes_tested" class="bx-num">Genes tested</th>
+          </tr></thead>
+          <tbody data-draw="studies-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bx-card" id="card-qc">
+      <h2 class="bx-card-title">Sample quality</h2>
+      <p class="bx-card-note">Read counts from Trim Galore, unique alignments from STAR (MAPQ 60), and the share of those assigned to genes by featureCounts. Glioblastoma libraries assign far fewer reads to exons (<span class="bx-warn-text">amber</span>), which suggests a different library type.</p>
+      <div class="bx-scroll bx-scroll-tall">
+        <table class="bx-table" data-source="samples" data-row-key="run">
+          <thead><tr>
+            <th data-field="run">Run</th>
+            <th data-field="disease">Disease</th>
+            <th data-field="group">Group</th>
+            <th data-field="raw_reads" class="bx-num">Raw reads</th>
+            <th data-field="adapter_pct" class="bx-num">Adapter %</th>
+            <th data-field="unique_pct" class="bx-num">Uniquely aligned %</th>
+            <th data-field="assigned_pct" class="bx-num">Assigned to genes %</th>
+          </tr></thead>
+          <tbody data-draw="qc-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bx-card bx-card-quiet" id="card-missing">
+      <h2 class="bx-card-title">Not in the dashboard yet</h2>
+      <p class="bx-card-note">The shared folder held the significant-gene tables but not the full pipeline output. Pathway enrichment (KEGG, GO, Reactome), sample-level expression (VST matrix, PCA, heatmaps) and volcano points for non-significant genes need these files from <code>final_output/</code>: <code>*_all_genes.csv</code>, <code>ml/matrices/vst_counts_gene_x_sample.csv</code>, <code>ml/matrices/combined_metadata.csv</code> and <code>extended_analysis/pathway_analysis/</code>.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DIFFERENTIAL EXPRESSION ===================== -->
+  <section class="bx-page" id="de" data-page="de" hidden>
+    <div class="bx-controls">
+      <div class="bx-seg" role="group" aria-label="Disease">
+        <button class="bx-seg-btn" data-disease="stroke">Stroke</button>
+        <button class="bx-seg-btn" data-disease="meningitis">Meningitis</button>
+        <button class="bx-seg-btn" data-disease="gb">Glioblastoma</button>
+      </div>
+      <div class="bx-seg" role="group" aria-label="Fold-change threshold">
+        <span class="bx-seg-label">|log2FC| ≥</span>
+        <button class="bx-seg-btn" data-lfc="0">0</button>
+        <button class="bx-seg-btn" data-lfc="1">1</button>
+        <button class="bx-seg-btn" data-lfc="2">2</button>
+      </div>
+    </div>
+    <p class="bx-lead"><b data-draw="de-sum" data-source="deg_summary" data-field="n_sig">—</b> significant genes: <b class="bx-up" data-draw="de-sum" data-source="deg_summary" data-field="n_up">—</b> up and <b class="bx-down" data-draw="de-sum" data-source="deg_summary" data-field="n_down">—</b> down in cases. Points beyond the fold-change threshold are coloured.</p>
+
+    <div class="bx-card" id="card-volcano">
+      <h2 class="bx-card-title">Volcano plot (significant genes)</h2>
+      <p class="bx-card-note">Each point is a gene with padj &lt; 0.05. Non-significant genes are not in the exported tables, so the usual grey cloud near zero is absent. Hover for details; the 12 strongest genes are labelled.</p>
+      <div class="bx-chart bx-chart-volcano" data-draw="volcano" data-source="deg"></div>
+    </div>
+
+    <div class="bx-card" id="card-degtable">
+      <h2 class="bx-card-title">Gene table</h2>
+      <p class="bx-card-note">Sorted by adjusted p-value; shows the first 250 matches. Search by symbol or Ensembl ID. Click a row to open it in Gene lookup.</p>
+      <input class="bx-search" id="de-search" type="search" placeholder="Search genes…" aria-label="Search genes">
+      <div class="bx-scroll bx-scroll-tall">
+        <table class="bx-table bx-clickable" data-source="deg" data-row-key="disease,gene_id">
+          <thead><tr>
+            <th data-field="symbol">Gene</th>
+            <th data-field="gene_id">Ensembl ID</th>
+            <th data-field="log2fc" class="bx-num">log2FC</th>
+            <th data-field="padj" class="bx-num">padj</th>
+          </tr></thead>
+          <tbody data-draw="de-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GENE LOOKUP ===================== -->
+  <section class="bx-page" id="gene" data-page="gene" hidden>
+    <div class="bx-controls">
+      <input class="bx-search bx-gene-input" id="gene-input" type="search" placeholder="Gene symbol, e.g. Selp" aria-label="Gene symbol">
+      <div class="bx-chips" aria-label="Examples">
+        <span class="bx-seg-label">Try:</span>
+        <button class="bx-chip" data-gene="Selp">Selp</button>
+        <button class="bx-chip" data-gene="Icam1">Icam1</button>
+        <button class="bx-chip" data-gene="Lcn2">Lcn2</button>
+        <button class="bx-chip" data-gene="Cxcl9">Cxcl9</button>
+        <button class="bx-chip" data-gene="Saa3">Saa3</button>
+        <button class="bx-chip" data-gene="Spp1">Spp1</button>
+        <button class="bx-chip" data-gene="Cldn5">Cldn5</button>
+        <button class="bx-chip" data-gene="H19">H19</button>
+      </div>
+    </div>
+    <div class="bx-card" id="card-gene">
+      <h2 class="bx-card-title">log2 fold change by disease</h2>
+      <p class="bx-card-note">Bars show significant changes only (padj &lt; 0.05), from this pipeline and from the lab's classic analysis. "n.s." means the gene was not in that disease's DEG list.</p>
+      <div class="bx-chart bx-chart-gene" data-draw="gene-chart" data-source="compare"></div>
+    </div>
+    <div class="bx-card" id="card-genetable">
+      <h2 class="bx-card-title">Values</h2>
+      <div class="bx-scroll">
+        <table class="bx-table" data-source="compare" data-row-key="disease,gene_id">
+          <thead><tr>
+            <th data-field="disease">Disease</th>
+            <th data-field="symbol">Gene</th>
+            <th data-field="gene_id">Ensembl ID</th>
+            <th data-field="ai_log2fc" class="bx-num">log2FC (this pipeline)</th>
+            <th data-field="ai_padj" class="bx-num">padj (this pipeline)</th>
+            <th data-field="mk_log2fc" class="bx-num">log2FC (classic)</th>
+            <th data-field="mk_padj" class="bx-num">padj (classic)</th>
+          </tr></thead>
+          <tbody data-draw="gene-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CROSS-DISEASE ===================== -->
+  <section class="bx-page" id="cross" data-page="cross" hidden>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-upset">
+        <h2 class="bx-card-title">Overlap of significant genes</h2>
+        <p class="bx-card-note">Exclusive intersections: each gene is counted once, in the combination of diseases where it is significant.</p>
+        <div class="bx-chart bx-chart-upset" data-draw="upset" data-source="overlap"></div>
+      </div>
+      <div class="bx-card" id="card-direction">
+        <h2 class="bx-card-title">Direction of the shared genes</h2>
+        <p class="bx-card-note">For genes significant in all three diseases: changed the same way everywhere, or not.</p>
+        <div class="bx-chart bx-chart-dir" data-draw="direction" data-source="shared_direction"></div>
+      </div>
+    </div>
+    <div class="bx-card" id="card-heatmap">
+      <h2 class="bx-card-title">Strongest shared genes</h2>
+      <p class="bx-card-note">The 40 genes significant in all three diseases whose smallest |log2FC| is largest, i.e. strongly changed everywhere. Colour is log2FC (red up, blue down).</p>
+      <div class="bx-chart bx-chart-heat" data-draw="heatmap" data-source="shared_all"></div>
+    </div>
+    <div class="bx-card" id="card-sharedtable">
+      <h2 class="bx-card-title">All shared genes</h2>
+      <p class="bx-card-note">Genes with padj &lt; 0.05 in stroke, meningitis and glioblastoma, sorted by the smallest |log2FC| across the three. Click a row to open it in Gene lookup.</p>
+      <input class="bx-search" id="shared-search" type="search" placeholder="Search shared genes…" aria-label="Search shared genes">
+      <div class="bx-scroll bx-scroll-tall">
+        <table class="bx-table bx-clickable" data-source="shared_all" data-row-key="gene_id">
+          <thead><tr>
+            <th data-field="symbol">Gene</th>
+            <th data-field="stroke" class="bx-num">Stroke log2FC</th>
+            <th data-field="meningitis" class="bx-num">Meningitis log2FC</th>
+            <th data-field="gb" class="bx-num">GB log2FC</th>
+            <th data-field="direction">Direction</th>
+          </tr></thead>
+          <tbody data-draw="shared-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PIPELINE CHECK ===================== -->
+  <section class="bx-page" id="check" data-page="check" hidden>
+    <p class="bx-lead">The same datasets were analysed independently with the lab's classic workflow (Manish). Agreement between the two is a check on this pipeline.</p>
+    <div class="bx-card" id="card-concord">
+      <h2 class="bx-card-title">Significant genes found by each pipeline</h2>
+      <p class="bx-card-note">Genes with padj &lt; 0.05 in this pipeline, the classic analysis, or both.</p>
+      <div class="bx-chart bx-chart-concord" data-draw="concord-bars" data-source="concord"></div>
+    </div>
+    <div class="bx-controls">
+      <div class="bx-seg" role="group" aria-label="Disease">
+        <button class="bx-seg-btn" data-disease="stroke">Stroke</button>
+        <button class="bx-seg-btn" data-disease="meningitis">Meningitis</button>
+        <button class="bx-seg-btn" data-disease="gb">Glioblastoma</button>
+      </div>
+    </div>
+    <div class="bx-tiles">
+      <div class="bx-tile" id="tile-both">
+        <div class="bx-tile-label">Found by both</div>
+        <div class="bx-tile-num" data-draw="ck" data-source="concord" data-field="both">—</div>
+      </div>
+      <div class="bx-tile" id="tile-aionly">
+        <div class="bx-tile-label">This pipeline only</div>
+        <div class="bx-tile-num" data-draw="ck" data-source="concord" data-field="ai_only">—</div>
+      </div>
+      <div class="bx-tile" id="tile-mkonly">
+        <div class="bx-tile-label">Classic only</div>
+        <div class="bx-tile-num" data-draw="ck" data-source="concord" data-field="classic_only">—</div>
+      </div>
+      <div class="bx-tile" id="tile-r">
+        <div class="bx-tile-label">log2FC correlation (Pearson r)</div>
+        <div class="bx-tile-num" data-draw="ck" data-source="concord" data-field="r">—</div>
+      </div>
+    </div>
+    <div class="bx-card" id="card-scatter">
+      <h2 class="bx-card-title">log2FC agreement for genes found by both</h2>
+      <p class="bx-card-note">Each point is a gene; the dashed line is perfect agreement.</p>
+      <div class="bx-chart bx-chart-scatter" data-draw="ck-scatter" data-source="compare"></div>
+    </div>
+  </section>
+
+  <!-- ===================== MACHINE LEARNING ===================== -->
+  <section class="bx-page" id="ml" data-page="ml" hidden>
+    <div class="bx-card bx-card-quiet" id="card-mlnote">
+      <h2 class="bx-card-title">How to read these results</h2>
+      <p class="bx-card-note">With 20 samples and each disease from a different study, perfect scores mostly show that groups are easy to separate, not that a diagnostic signature is validated. Leave-one-disease-out models ranked samples perfectly (ROC-AUC 1.0) but the decision threshold did not transfer between studies, so accuracy on held-out stroke and glioblastoma was 0.5. Candidate genes were pre-selected from DEGs computed on all samples, which can inflate scores.</p>
+    </div>
+    <div class="bx-card" id="card-metrics">
+      <h2 class="bx-card-title">Model performance</h2>
+      <div class="bx-scroll">
+        <table class="bx-table" data-source="ml_metrics" data-row-key="id">
+          <thead><tr>
+            <th data-field="model">Model</th>
+            <th data-field="evaluation">Evaluation</th>
+            <th data-field="n_test" class="bx-num">Test samples</th>
+            <th data-field="accuracy" class="bx-num">Accuracy</th>
+            <th data-field="balanced_accuracy" class="bx-num">Balanced accuracy</th>
+            <th data-field="roc_auc" class="bx-num">ROC-AUC</th>
+          </tr></thead>
+          <tbody data-draw="ml-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-featpan">
+        <h2 class="bx-card-title">Top genes: case vs control (all diseases)</h2>
+        <p class="bx-card-note">Logistic regression coefficients; positive means higher in disease.</p>
+        <div class="bx-chart bx-chart-feat" data-draw="feat" data-source="ml_features" data-where="analysis=pan_disease"></div>
+      </div>
+      <div class="bx-card" id="card-featgbm">
+        <h2 class="bx-card-title">Top genes: glioblastoma vs sham</h2>
+        <p class="bx-card-note">Logistic regression coefficients from the GBM-only model.</p>
+        <div class="bx-chart bx-chart-feat" data-draw="feat" data-source="ml_features" data-where="analysis=gbm_only"></div>
+      </div>
+    </div>
+  </section>
+</div>
+  <footer class="bx-foot">
+    BIO F376 Design Project · J Lokesh Rao (2023B1A10829H) · Supervisor: Dr. Kavi Devraj, BITS Pilani Hyderabad Campus.
+    Data: DESeq2 results of the BBB RNA-seq pipeline (GRCm39, Ensembl 115) and the lab's classic analysis. Raw data: GEO GSE131193 (stroke), GSE122952 (meningitis).
+  </footer>
+</div>
+<script src="js/d3.min.js"></script>
+<script src="js/runtime.js"></script>
+<script src="js/core.js"></script>
+<script src="js/draw-a.js"></script>
+<script src="js/draw-b.js"></script>
+</body>
+</html>

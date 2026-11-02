@@ -1,0 +1,14 @@
+model,evaluation,held_out,n_test,accuracy,balanced_accuracy,roc_auc,id
+Logistic regression,Held out: meningitis,meningitis,8,1.0,1.0,1.0,1
+Logistic regression,Held out: stroke,stroke,6,0.5,0.5,1.0,2
+Logistic regression,Held out: GB,gb,6,0.5,0.5,1.0,3
+Logistic regression,Pooled out-of-fold,all,20,0.7,0.7,1.0,4
+Linear SVM,Held out: meningitis,meningitis,8,1.0,1.0,1.0,5
+Linear SVM,Held out: stroke,stroke,6,0.5,0.5,1.0,6
+Linear SVM,Held out: GB,gb,6,0.5,0.5,1.0,7
+Linear SVM,Pooled out-of-fold,all,20,0.7,0.7,1.0,8
+GBM-only: logistic regression,LOOCV,gb,6,1.0,1.0,1.0,9
+GBM-only: linear SVM,LOOCV,gb,6,1.0,1.0,1.0,10
+GBM-only: random forest,LOOCV,gb,6,1.0,1.0,1.0,11
+GBM-only: Gaussian NB,LOOCV,gb,6,1.0,1.0,1.0,12
+Multiclass (cases only),LOOCV,all,10,1.0,,,13
