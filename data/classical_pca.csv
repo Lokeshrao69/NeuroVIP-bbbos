@@ -1,0 +1,17 @@
+method,n_genes,sample,run,label,condition,PC1,PC2,pct_PC1,pct_PC2,paper_pct_PC1,paper_pct_PC2
+top500,500,Meningitis_1,SRR8244647,Infected 1,case,47.3471,5.3153,93.6,2.7,39.2,14.1
+top500,500,Meningitis_2,SRR8244648,Infected 2,case,41.1645,4.091,93.6,2.7,39.2,14.1
+top500,500,Meningitis_3,SRR8244649,Infected 3,case,49.9047,-7.8312,93.6,2.7,39.2,14.1
+top500,500,Meningitis_4,SRR8244650,Infected 4,case,53.3509,-0.4623,93.6,2.7,39.2,14.1
+top500,500,Healthy_1,SRR8244651,Healthy 1,control,-50.2886,9.5018,93.6,2.7,39.2,14.1
+top500,500,Healthy_2,SRR8244652,Healthy 2,control,-48.0067,10.0156,93.6,2.7,39.2,14.1
+top500,500,Healthy_3,SRR8244653,Healthy 3,control,-45.3428,-13.9476,93.6,2.7,39.2,14.1
+top500,500,Healthy_4,SRR8244654,Healthy 4,control,-48.1291,-6.6827,93.6,2.7,39.2,14.1
+scaled,16362,Meningitis_1,SRR8244647,Infected 1,case,86.2271,29.5978,53.9,14.2,39.2,14.1
+scaled,16362,Meningitis_2,SRR8244648,Infected 2,case,63.05,11.2214,53.9,14.2,39.2,14.1
+scaled,16362,Meningitis_3,SRR8244649,Infected 3,case,92.6448,-23.3425,53.9,14.2,39.2,14.1
+scaled,16362,Meningitis_4,SRR8244650,Infected 4,case,105.676,-22.9802,53.9,14.2,39.2,14.1
+scaled,16362,Healthy_1,SRR8244651,Healthy 1,control,-89.7477,47.8871,53.9,14.2,39.2,14.1
+scaled,16362,Healthy_2,SRR8244652,Healthy 2,control,-101.289,-79.8948,53.9,14.2,39.2,14.1
+scaled,16362,Healthy_3,SRR8244653,Healthy 3,control,-73.4346,67.5637,53.9,14.2,39.2,14.1
+scaled,16362,Healthy_4,SRR8244654,Healthy 4,control,-83.1267,-30.0525,53.9,14.2,39.2,14.1
