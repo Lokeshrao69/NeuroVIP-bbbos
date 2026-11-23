@@ -1,0 +1,153 @@
+symbol,paper_label,category,gene_id,sample,run,label,condition,count
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Meningitis_1,SRR8244647,Infected 1,case,9117
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Meningitis_2,SRR8244648,Infected 2,case,9459
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Meningitis_3,SRR8244649,Infected 3,case,12175
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Meningitis_4,SRR8244650,Infected 4,case,14105
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Healthy_1,SRR8244651,Healthy 1,control,1715
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Healthy_2,SRR8244652,Healthy 2,control,1901
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Healthy_3,SRR8244653,Healthy 3,control,2455
+Hif1a,HIF-1α,HIF-1α / VEGF axis,ENSMUSG00000021109,Healthy_4,SRR8244654,Healthy 4,control,2101
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Meningitis_1,SRR8244647,Infected 1,case,259
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Meningitis_2,SRR8244648,Infected 2,case,234
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Meningitis_3,SRR8244649,Infected 3,case,201
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Meningitis_4,SRR8244650,Infected 4,case,289
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Healthy_1,SRR8244651,Healthy 1,control,180
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Healthy_2,SRR8244652,Healthy 2,control,144
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Healthy_3,SRR8244653,Healthy 3,control,152
+Vegfa,VEGF,HIF-1α / VEGF axis,ENSMUSG00000023951,Healthy_4,SRR8244654,Healthy 4,control,72
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Meningitis_1,SRR8244647,Infected 1,case,14392
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Meningitis_2,SRR8244648,Infected 2,case,11090
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Meningitis_3,SRR8244649,Infected 3,case,7383
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Meningitis_4,SRR8244650,Infected 4,case,15543
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Healthy_1,SRR8244651,Healthy 1,control,471
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Healthy_2,SRR8244652,Healthy 2,control,626
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Healthy_3,SRR8244653,Healthy 3,control,751
+Angpt2,ANGPT2,Angiopoietin–Tie2,ENSMUSG00000031465,Healthy_4,SRR8244654,Healthy 4,control,777
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Meningitis_1,SRR8244647,Infected 1,case,2386
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Meningitis_2,SRR8244648,Infected 2,case,3291
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Meningitis_3,SRR8244649,Infected 3,case,2283
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Meningitis_4,SRR8244650,Infected 4,case,1860
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Healthy_1,SRR8244651,Healthy 1,control,20720
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Healthy_2,SRR8244652,Healthy 2,control,24295
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Healthy_3,SRR8244653,Healthy 3,control,14946
+Tek,Tie2,Angiopoietin–Tie2,ENSMUSG00000006386,Healthy_4,SRR8244654,Healthy 4,control,19230
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Meningitis_1,SRR8244647,Infected 1,case,2151
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Meningitis_2,SRR8244648,Infected 2,case,3419
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Meningitis_3,SRR8244649,Infected 3,case,1899
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Meningitis_4,SRR8244650,Infected 4,case,2158
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Healthy_1,SRR8244651,Healthy 1,control,33177
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Healthy_2,SRR8244652,Healthy 2,control,31842
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Healthy_3,SRR8244653,Healthy 3,control,34401
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,ENSMUSG00000020154,Healthy_4,SRR8244654,Healthy 4,control,31274
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Meningitis_1,SRR8244647,Infected 1,case,399
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Meningitis_2,SRR8244648,Infected 2,case,318
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Meningitis_3,SRR8244649,Infected 3,case,330
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Meningitis_4,SRR8244650,Infected 4,case,1289
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Healthy_1,SRR8244651,Healthy 1,control,2
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Healthy_2,SRR8244652,Healthy 2,control,13
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Healthy_3,SRR8244653,Healthy 3,control,15
+Il1b,IL-1β,Inflammation,ENSMUSG00000027398,Healthy_4,SRR8244654,Healthy 4,control,10
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Meningitis_1,SRR8244647,Infected 1,case,275
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Meningitis_2,SRR8244648,Infected 2,case,102
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Meningitis_3,SRR8244649,Infected 3,case,229
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Meningitis_4,SRR8244650,Infected 4,case,702
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Healthy_1,SRR8244651,Healthy 1,control,2
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Healthy_2,SRR8244652,Healthy 2,control,2
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Healthy_3,SRR8244653,Healthy 3,control,1
+Tnf,TNF-α,Inflammation,ENSMUSG00000024401,Healthy_4,SRR8244654,Healthy 4,control,0
+Snai1,Snail,EndMT,ENSMUSG00000042821,Meningitis_1,SRR8244647,Infected 1,case,259
+Snai1,Snail,EndMT,ENSMUSG00000042821,Meningitis_2,SRR8244648,Infected 2,case,215
+Snai1,Snail,EndMT,ENSMUSG00000042821,Meningitis_3,SRR8244649,Infected 3,case,260
+Snai1,Snail,EndMT,ENSMUSG00000042821,Meningitis_4,SRR8244650,Infected 4,case,280
+Snai1,Snail,EndMT,ENSMUSG00000042821,Healthy_1,SRR8244651,Healthy 1,control,76
+Snai1,Snail,EndMT,ENSMUSG00000042821,Healthy_2,SRR8244652,Healthy 2,control,128
+Snai1,Snail,EndMT,ENSMUSG00000042821,Healthy_3,SRR8244653,Healthy 3,control,149
+Snai1,Snail,EndMT,ENSMUSG00000042821,Healthy_4,SRR8244654,Healthy 4,control,70
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Meningitis_1,SRR8244647,Infected 1,case,29893
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Meningitis_2,SRR8244648,Infected 2,case,30953
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Meningitis_3,SRR8244649,Infected 3,case,15472
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Meningitis_4,SRR8244650,Infected 4,case,34531
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Healthy_1,SRR8244651,Healthy 1,control,59689
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Healthy_2,SRR8244652,Healthy 2,control,73202
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Healthy_3,SRR8244653,Healthy 3,control,49572
+Cldn5,Claudin-5,BBB junctions,ENSMUSG00000041378,Healthy_4,SRR8244654,Healthy 4,control,48013
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Meningitis_1,SRR8244647,Infected 1,case,5548
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Meningitis_2,SRR8244648,Infected 2,case,6046
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Meningitis_3,SRR8244649,Infected 3,case,4033
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Meningitis_4,SRR8244650,Infected 4,case,4569
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Healthy_1,SRR8244651,Healthy 1,control,9496
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Healthy_2,SRR8244652,Healthy 2,control,12096
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Healthy_3,SRR8244653,Healthy 3,control,10921
+Ocln,Occludin,BBB junctions,ENSMUSG00000021638,Healthy_4,SRR8244654,Healthy 4,control,13389
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Meningitis_1,SRR8244647,Infected 1,case,6224
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Meningitis_2,SRR8244648,Infected 2,case,6605
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Meningitis_3,SRR8244649,Infected 3,case,6177
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Meningitis_4,SRR8244650,Infected 4,case,5740
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Healthy_1,SRR8244651,Healthy 1,control,12550
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Healthy_2,SRR8244652,Healthy 2,control,14148
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Healthy_3,SRR8244653,Healthy 3,control,14973
+Tjp1,ZO-1,BBB junctions,ENSMUSG00000030516,Healthy_4,SRR8244654,Healthy 4,control,15920
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Meningitis_1,SRR8244647,Infected 1,case,2324
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Meningitis_2,SRR8244648,Infected 2,case,3832
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Meningitis_3,SRR8244649,Infected 3,case,3865
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Meningitis_4,SRR8244650,Infected 4,case,3101
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Healthy_1,SRR8244651,Healthy 1,control,14938
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Healthy_2,SRR8244652,Healthy 2,control,19932
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Healthy_3,SRR8244653,Healthy 3,control,13860
+Cav1,Caveolin-1,BBB transcytosis,ENSMUSG00000007655,Healthy_4,SRR8244654,Healthy 4,control,19757
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Meningitis_1,SRR8244647,Infected 1,case,226
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Meningitis_2,SRR8244648,Infected 2,case,471
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Meningitis_3,SRR8244649,Infected 3,case,65
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Meningitis_4,SRR8244650,Infected 4,case,156
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Healthy_1,SRR8244651,Healthy 1,control,326
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Healthy_2,SRR8244652,Healthy 2,control,546
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Healthy_3,SRR8244653,Healthy 3,control,427
+Plvap,PLVAP,BBB transcytosis,ENSMUSG00000034845,Healthy_4,SRR8244654,Healthy 4,control,142
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Meningitis_1,SRR8244647,Infected 1,case,14910
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Meningitis_2,SRR8244648,Infected 2,case,15650
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Meningitis_3,SRR8244649,Infected 3,case,11438
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Meningitis_4,SRR8244650,Infected 4,case,13878
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Healthy_1,SRR8244651,Healthy 1,control,27635
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Healthy_2,SRR8244652,Healthy 2,control,32789
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Healthy_3,SRR8244653,Healthy 3,control,28864
+Pecam1,PECAM-1 / CD31,Endothelial markers,ENSMUSG00000020717,Healthy_4,SRR8244654,Healthy 4,control,31068
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Meningitis_1,SRR8244647,Infected 1,case,18251
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Meningitis_2,SRR8244648,Infected 2,case,22441
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Meningitis_3,SRR8244649,Infected 3,case,20146
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Meningitis_4,SRR8244650,Infected 4,case,16361
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Healthy_1,SRR8244651,Healthy 1,control,20825
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Healthy_2,SRR8244652,Healthy 2,control,23284
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Healthy_3,SRR8244653,Healthy 3,control,39335
+Vwf,vWF,Endothelial markers,ENSMUSG00000001930,Healthy_4,SRR8244654,Healthy 4,control,22399
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Meningitis_1,SRR8244647,Infected 1,case,30186
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Meningitis_2,SRR8244648,Infected 2,case,26347
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Meningitis_3,SRR8244649,Infected 3,case,24418
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Meningitis_4,SRR8244650,Infected 4,case,40199
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Healthy_1,SRR8244651,Healthy 1,control,16488
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Healthy_2,SRR8244652,Healthy 2,control,18897
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Healthy_3,SRR8244653,Healthy 3,control,15535
+Cdh5,VE-cadherin,Endothelial markers,ENSMUSG00000031871,Healthy_4,SRR8244654,Healthy 4,control,18534
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Meningitis_1,SRR8244647,Infected 1,case,8119
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Meningitis_2,SRR8244648,Infected 2,case,8548
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Meningitis_3,SRR8244649,Infected 3,case,8718
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Meningitis_4,SRR8244650,Infected 4,case,9302
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Healthy_1,SRR8244651,Healthy 1,control,10080
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Healthy_2,SRR8244652,Healthy 2,control,12477
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Healthy_3,SRR8244653,Healthy 3,control,9373
+Rplp0,RPLP0,Reference genes,ENSMUSG00000067274,Healthy_4,SRR8244654,Healthy 4,control,10948
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Meningitis_1,SRR8244647,Infected 1,case,1249
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Meningitis_2,SRR8244648,Infected 2,case,1289
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Meningitis_3,SRR8244649,Infected 3,case,1284
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Meningitis_4,SRR8244650,Infected 4,case,1185
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Healthy_1,SRR8244651,Healthy 1,control,706
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Healthy_2,SRR8244652,Healthy 2,control,896
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Healthy_3,SRR8244653,Healthy 3,control,874
+G6pdx,G6PDX,Reference genes,ENSMUSG00000031400,Healthy_4,SRR8244654,Healthy 4,control,897
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Meningitis_1,SRR8244647,Infected 1,case,106809
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Meningitis_2,SRR8244648,Infected 2,case,75629
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Meningitis_3,SRR8244649,Infected 3,case,95697
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Meningitis_4,SRR8244650,Infected 4,case,111105
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Healthy_1,SRR8244651,Healthy 1,control,33676
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Healthy_2,SRR8244652,Healthy 2,control,34019
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Healthy_3,SRR8244653,Healthy 3,control,44527
+Actb,β-actin,Reference genes,ENSMUSG00000029580,Healthy_4,SRR8244654,Healthy 4,control,57405

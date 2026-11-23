@@ -1,0 +1,5 @@
+numpy
+pandas
+scipy
+pydeseq2>=0.5
+pytest  # tests only

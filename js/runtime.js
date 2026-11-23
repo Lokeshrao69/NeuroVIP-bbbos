@@ -8,8 +8,22 @@
     studies: 'data/studies.csv',
     ml_metrics: 'data/ml_metrics.csv',
     ml_features: 'data/ml_features.csv',
+    // classical analysis (meningitis), written by analysis/classical_meningitis.py
+    cl_methods: 'data/classical_methods.csv',
+    cl_summary: 'data/classical_summary.csv',
+    cl_deg: 'data/classical_deg.csv',
+    cl_genes: 'data/classical_genes.csv',
+    cl_counts: 'data/classical_counts.csv',
+    cl_top: 'data/classical_top.csv',
+    cl_paper_top: 'data/classical_paper_top.csv',
+    cl_pca: 'data/classical_pca.csv',
+    cl_sample_dist: 'data/classical_sample_dist.csv',
+    cl_dendrogram: 'data/classical_dendrogram.csv',
+    cl_sample_heatmap: 'data/classical_sample_heatmap.csv',
+    cl_pathways: 'data/classical_pathways.csv',
+    cl_pathway_genes: 'data/classical_pathway_genes.csv',
   };
-  const DEFAULTS = { tab: 'overview', disease: 'stroke', lfc: 1, gene: 'Selp' };
+  const DEFAULTS = { tab: 'overview', disease: 'stroke', lfc: 1, gene: 'Selp', clsrc: 'pa', clrank: 'padj', clhl: 'paper', clheat: 'z', clpca: 'top500', cldb: 'KEGG', clpaper: 'all', clpanel: '' };
 
   const store = {};   // id -> {status, data, columns}
   const calcs = {};   // id -> {inputs, fn, cache}

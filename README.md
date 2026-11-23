@@ -110,6 +110,17 @@ Fold changes are essentially identical. This pipeline calls somewhat more genes 
 ### Help
 Definitions of all terms (log2 fold change, adjusted p-value, up/down-regulated), a summary of the processing pipeline, limitations and how to cite NeuroVIP.
 
+### Classical analysis (meningitis)
+Reproduces the RNA-seq analysis of Devraj et al. 2020 (*Acta Neuropathol.* 140:183–208) on the same experiment (GSE122952, 4 infected vs 4 healthy mice). The study's own count matrix from GEO is re-analysed with DESeq2 and the paper's thresholds (padj ≤ 0.05, FC ≥ 1.5, mean ≥ 5 reads) and compared with NeuroVIP's two DESeq2 runs.
+- **DESeq2 run** switch (paper counts re-run, NeuroVIP pipeline, classic analysis): every chart and table on the tab follows it.
+- **Methods table:** each paper method and how it was reproduced, with text generated from the results.
+- **DEG counts vs paper:** counts with and without the 1.5-fold cut-off next to the paper's 4,382 up / 4,354 down.
+- **Volcano plot** (all genes for the paper-count run), highlighting the paper's named genes, its top-25 genes or a selected pathway.
+- **Genes named in the paper** and **read counts per sample** (Fig. 6d): HIF-1α, VEGF, ANGPT2/Tie2/PTPRB, IL-1β, TNF-α, Snail, claudin-5, occludin, ZO-1, caveolin-1, PLVAP, PECAM-1, vWF, VE-cadherin and the reference genes.
+- **Top 25 up / 25 down** (Fig. 6c) as per-sample Z-scores, with a table ranking the paper's own top-25 genes in each run.
+- **PCA** (Fig. 6b) and **hierarchical clustering of samples** (Supp. Fig. 8).
+- **Pathway enrichment** (Fig. 6e–f): KOBAS-style hypergeometric test on official KEGG, PANTHER and Reactome mouse gene sets, plus curated BBB panels. ★ marks the pathways in the paper's figure. Click a pathway to list its genes.
+
 ### Machine learning
 - **Model performance:** results for classifiers trained to tell disease samples from controls.
   - **Leave-one-disease-out** validation trains on two diseases and tests on the third.
@@ -171,7 +182,32 @@ All numbers on the site are read from the CSV files in `data/`. To update the si
 
 `disease` is always one of `stroke`, `meningitis` or `gb`.
 
-**Planned additions:** pathway enrichment, PCA and sample-level heatmaps, plus volcano plots that include all genes. These need the following files from the pipeline's `final_output/` folder:
+### Classical analysis files
+
+`data/classical_*.csv` are generated, not edited by hand. To regenerate them:
+
+```bash
+python3 -m venv .venv                             # once; .venv/ is git-ignored
+.venv/bin/pip install -r analysis/requirements.txt   # numpy, pandas, scipy, pydeseq2, pytest
+.venv/bin/python analysis/classical_meningitis.py    # about 30 s after the first download
+.venv/bin/python -m pytest analysis/tests            # synthetic-data tests, no network
+```
+
+A virtual environment is needed on systems that block system-wide `pip` (PEP 668, e.g. Arch, Debian 12+, Homebrew Python).
+
+On its first run the script downloads, and caches in `data/raw/` (git-ignored, about 40 MB):
+
+| Source | Used for |
+|---|---|
+| GEO `GSE122952_counts.matrix.norm_anno.txt.gz` | the study's normalised counts for DESeq2, PCA, clustering, heatmaps and read counts |
+| KEGG REST (`list/pathway/mmu`, `link/pathway/mmu`, `list/mmu`) | KEGG pathways |
+| PANTHER `SequenceAssociationPathway3.6.8.txt` (mouse rows) | PANTHER pathways |
+| Reactome `Ensembl2Reactome.txt` (mouse rows) | Reactome pathways |
+| MGI `MRK_ENSEMBL.rpt` | mapping KEGG symbols and PANTHER MGI IDs to Ensembl |
+
+Use `--offline` to forbid downloads. Delete `data/raw/genesets.tsv` to rebuild the gene sets from the cached sources, or delete `data/raw/` to download fresh releases. The NeuroVIP and classic runs are read from `ai_vs_classic.csv`.
+
+**Planned additions:** pathway enrichment, PCA and sample-level heatmaps, plus volcano plots that include all genes, for all three diseases (meningitis already has them on the Classical analysis tab). These need the following files from the pipeline's `final_output/` folder:
 
 - `*_all_genes.csv`
 - `ml/matrices/vst_counts_gene_x_sample.csv`
@@ -190,6 +226,9 @@ js/runtime.js     loads the CSV files and redraws charts when a filter changes
 js/core.js        shared helpers, calculations (DEG counts, overlaps, shared genes, pipeline agreement) and tab controls
 js/draw-a.js      Home and Differential expression
 js/draw-b.js      Gene search, Shared genes, Pipeline validation, Machine learning and the gene autocomplete list
+js/draw-c.js      Classical analysis (meningitis)
+analysis/classical_meningitis.py   computes data/classical_*.csv (downloads its inputs to data/raw/)
+analysis/tests/   tests for the script on a small synthetic dataset
 data/             the CSV files above
 ```
 

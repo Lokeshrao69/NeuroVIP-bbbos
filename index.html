@@ -38,6 +38,7 @@
         <button class="bx-tab" role="tab" data-tab="gene" id="tab-gene">Gene search</button>
         <button class="bx-tab" role="tab" data-tab="cross" id="tab-cross">Shared genes</button>
         <button class="bx-tab" role="tab" data-tab="check" id="tab-check">Pipeline validation</button>
+        <button class="bx-tab" role="tab" data-tab="classical" id="tab-classical">Classical analysis</button>
         <button class="bx-tab" role="tab" data-tab="ml" id="tab-ml">Machine learning</button>
         <button class="bx-tab" role="tab" data-tab="help" id="tab-help">Help</button>
       </div>
@@ -120,7 +121,7 @@
 
     <div class="bx-card bx-card-quiet" id="card-missing">
       <h2 class="bx-card-title">Coming soon</h2>
-      <p class="bx-card-note">Pathway enrichment (KEGG, GO, Reactome), sample-level expression (PCA, heatmaps) and full volcano plots including non-significant genes will be added once the complete pipeline output is available.</p>
+      <p class="bx-card-note">Pathway enrichment (KEGG, GO, Reactome), sample-level expression (PCA, heatmaps) and full volcano plots including non-significant genes will be added for all three diseases once the complete pipeline output is available. For meningitis, the <a href="#classical" data-goto="classical">Classical analysis</a> tab already has all of these, computed from the published count matrix of the original study.</p>
     </div>
   </section>
 
@@ -317,6 +318,208 @@
     </div>
   </section>
 
+  <!-- ===================== CLASSICAL ANALYSIS (MENINGITIS) ===================== -->
+  <section class="bx-page" id="classical" data-page="classical" hidden>
+    <div>
+      <h1 class="nv-page-title">Classical analysis: bacterial meningitis</h1>
+      <p class="nv-page-intro">The RNA-seq analysis of Devraj et al. (<i>Acta Neuropathol.</i> 2020;140:183–208), reproduced on the same experiment: brain microvessels from 4 mice infected with <i>S. pneumoniae</i> (via the blood) and 4 healthy mice, GEO GSE122952. The paper's own count matrix from GEO is re-analysed with DESeq2 and the paper's thresholds (<b>padj ≤ 0.05, fold change ≥ 1.5, mean ≥ 5 reads</b>), and compared with NeuroVIP's two DESeq2 runs of the same samples. Everything is computed by <code>analysis/classical_meningitis.py</code>.</p>
+    </div>
+
+    <div class="bx-controls">
+      <div class="bx-seg" role="group" aria-label="DESeq2 run">
+        <span class="bx-seg-label">DESeq2 run:</span>
+        <button class="bx-seg-btn" data-clsrc="pa">Paper counts (re-run)</button>
+        <button class="bx-seg-btn" data-clsrc="nv">NeuroVIP pipeline</button>
+        <button class="bx-seg-btn" data-clsrc="cl">Classic analysis</button>
+      </div>
+    </div>
+
+    <div class="bx-tiles">
+      <div class="bx-tile">
+        <div class="bx-tile-label">Paper thresholds · <span data-draw="cl-src-name">—</span></div>
+        <div class="bx-tile-num"><span class="bx-up" data-draw="cl-tile" data-tkey="strict" data-field="n_up">—</span> / <span class="bx-down" data-draw="cl-tile" data-tkey="strict" data-field="n_down">—</span></div>
+        <div class="bx-tile-sub" data-draw="cl-tile-sub" data-tkey="strict">up / down</div>
+      </div>
+      <div class="bx-tile">
+        <div class="bx-tile-label">padj only · <span data-draw="cl-src-name">—</span></div>
+        <div class="bx-tile-num"><span class="bx-up" data-draw="cl-tile" data-tkey="padj" data-field="n_up">—</span> / <span class="bx-down" data-draw="cl-tile" data-tkey="padj" data-field="n_down">—</span></div>
+        <div class="bx-tile-sub" data-draw="cl-tile-sub" data-tkey="padj">up / down</div>
+      </div>
+      <div class="bx-tile">
+        <div class="bx-tile-label">Reported in the paper</div>
+        <div class="bx-tile-num"><span class="bx-up" data-draw="cl-tile" data-tkey="reported" data-field="n_up">—</span> / <span class="bx-down" data-draw="cl-tile" data-tkey="reported" data-field="n_down">—</span></div>
+        <div class="bx-tile-sub" data-draw="cl-tile-sub" data-tkey="reported">up / down</div>
+      </div>
+    </div>
+
+    <div class="bx-card" id="card-cl-methods">
+      <h2 class="bx-card-title">Paper methods and what was done here</h2>
+      <p class="bx-card-note">Each computational method in the paper and how it was reproduced. The text in the last column is generated from the results.</p>
+      <div class="bx-scroll">
+        <table class="bx-table bx-wrap" data-source="cl_methods" data-row-key="step">
+          <thead><tr><th data-field="step">Step</th><th data-field="paper_method">In the paper</th><th data-field="status">Status</th><th data-field="detail">Here</th></tr></thead>
+          <tbody data-draw="cl-methods-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bx-card" id="card-cl-counts">
+      <h2 class="bx-card-title">Number of differentially expressed genes compared with the paper</h2>
+      <p class="bx-card-note" data-draw="cl-counts-note"></p>
+      <div class="bx-chart bx-chart-clcounts" data-draw="cl-counts" data-source="cl_summary"></div>
+    </div>
+
+    <div class="bx-card" id="card-cl-volcano">
+      <h2 class="bx-card-title">Volcano plot with paper thresholds (paper Fig. 6b)</h2>
+      <p class="bx-card-note">Dashed lines: |FC| = 1.5 and padj = 0.05. Red / blue = passes both; grey = not significant or below 1.5-fold. <span data-draw="cl-volcano-note"></span></p>
+      <div class="bx-controls bx-controls-inline">
+        <div class="bx-seg" role="group" aria-label="Highlight">
+          <span class="bx-seg-label">Highlight:</span>
+          <button class="bx-seg-btn" data-clhl="paper">Genes named in the paper</button>
+          <button class="bx-seg-btn" data-clhl="top">Paper's top 25</button>
+          <button class="bx-seg-btn" data-clhl="panel">Selected pathway</button>
+        </div>
+      </div>
+      <div class="bx-chart bx-chart-volcano" data-draw="cl-volcano" data-source="cl_deg"></div>
+    </div>
+
+    <div class="bx-card" id="card-cl-genes">
+      <h2 class="bx-card-title">Genes named in the paper: HIF-1α/VEGF, angiopoietin–Tie2, inflammation and BBB junctions</h2>
+      <p class="bx-card-note">Bars: log2 fold change in the selected DESeq2 run (pale = significant but below 1.5-fold). Right column: what the paper reports (▲ up, ▼ down, ≈ unchanged, ref = reference gene) and what is seen here. ✓ = consistent, ! = differs. Reference genes: RPLP0 and G6PDX normalised the paper's qRT-PCR in cultured cells; β-actin was its Western blot loading control.</p>
+      <div class="bx-chart bx-chart-clgenes" data-draw="cl-genes-chart" data-source="cl_genes"></div>
+      <div class="bx-scroll">
+        <table class="bx-table bx-clickable" data-source="cl_genes" data-row-key="symbol">
+          <thead><tr>
+            <th data-field="symbol">Gene</th><th data-field="paper_label">Name in paper</th><th data-field="paper_claim">Paper reports</th>
+            <th data-field="pa_log2fc" class="bx-num">log2FC (paper counts)</th><th data-field="pa_padj" class="bx-num">padj</th>
+            <th data-field="nv_log2fc" class="bx-num">log2FC (NeuroVIP)</th><th data-field="nv_padj" class="bx-num">padj</th>
+            <th data-field="cl_log2fc" class="bx-num">log2FC (classic)</th><th data-field="cl_padj" class="bx-num">padj</th>
+            <th data-field="agreement">Consistent? (selected run)</th>
+          </tr></thead>
+          <tbody data-draw="cl-genes-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bx-card" id="card-cl-reads">
+      <h2 class="bx-card-title">Read counts per sample (paper Fig. 6d)</h2>
+      <p class="bx-card-note">Normalised read counts from the paper's GEO matrix, one dot per mouse sample; bars = group mean. The line under each gene gives the DESeq2 result of the selected run.</p>
+      <div class="bx-chart bx-chart-reads" data-draw="cl-reads" data-source="cl_counts"></div>
+    </div>
+
+    <div class="bx-grid">
+      <div class="bx-card" id="card-cl-top">
+        <h2 class="bx-card-title">Top 25 up- and down-regulated genes (paper Fig. 6c)</h2>
+        <p class="bx-card-note" data-draw="cl-top-note"></p>
+        <div class="bx-controls bx-controls-inline">
+          <div class="bx-seg" role="group" aria-label="Values">
+            <span class="bx-seg-label">Show:</span>
+            <button class="bx-seg-btn" data-clheat="z">Per-sample Z-scores</button>
+            <button class="bx-seg-btn" data-clheat="fc">log2FC in each run</button>
+          </div>
+          <div class="bx-seg" role="group" aria-label="Rank by">
+            <span class="bx-seg-label">Rank by:</span>
+            <button class="bx-seg-btn" data-clrank="padj">Significance</button>
+            <button class="bx-seg-btn" data-clrank="log2fc">Fold change</button>
+          </div>
+        </div>
+        <div class="bx-chart bx-chart-heat" data-draw="cl-top-heat" data-source="cl_top"></div>
+      </div>
+      <div>
+        <div class="bx-card" id="card-cl-pca">
+          <h2 class="bx-card-title">Principal component analysis (paper Fig. 6b)</h2>
+          <p class="bx-card-note" data-draw="cl-pca-note"></p>
+          <div class="bx-controls bx-controls-inline">
+            <div class="bx-seg" role="group" aria-label="PCA">
+              <span class="bx-seg-label">Genes:</span>
+              <button class="bx-seg-btn" data-clpca="top500">Top 500 variable</button>
+              <button class="bx-seg-btn" data-clpca="scaled">All, scaled</button>
+            </div>
+          </div>
+          <div class="bx-chart bx-chart-pca" data-draw="cl-pca" data-source="cl_pca"></div>
+        </div>
+        <div class="bx-card" id="card-cl-cluster">
+          <h2 class="bx-card-title">Hierarchical clustering of samples (paper Supp. Fig. 8)</h2>
+          <p class="bx-card-note">Euclidean distance between samples on VST expression, complete linkage. Darker = more similar. Bar under the tree: red = infected, grey = healthy.</p>
+          <div class="bx-chart bx-chart-cluster" data-draw="cl-cluster" data-source="cl_sample_dist"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bx-card" id="card-cl-ptop">
+      <h2 class="bx-card-title">The paper's top 25 genes, ranked here</h2>
+      <p class="bx-card-note" data-draw="cl-ptop-note"></p>
+      <div class="bx-scroll bx-scroll-tall">
+        <table class="bx-table bx-clickable" data-source="cl_paper_top" data-row-key="direction,paper_label">
+          <thead><tr>
+            <th data-field="direction">Direction</th><th data-field="paper_label">Gene in Fig. 6c</th>
+            <th data-field="pa_rank" class="bx-num">Rank (paper counts)</th><th data-field="nv_rank" class="bx-num">Rank (NeuroVIP)</th><th data-field="cl_rank" class="bx-num">Rank (classic)</th>
+            <th data-field="log2fc" class="bx-num">log2FC</th><th data-field="padj" class="bx-num">padj</th>
+          </tr></thead>
+          <tbody data-draw="cl-ptop-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="nv-help">
+      <summary>How the pathway analysis compares with the paper</summary>
+      <ul>
+        <li>The paper ran KOBAS 2.0 against KEGG, PANTHER and Reactome on genes "commonly regulated in all four meningitis microvessel samples compared to all the healthy ones (p &lt; 0.05, log2 fold change &gt; 0.585)".</li>
+        <li>Here the same selection is made on the paper's count matrix: DESeq2 p &lt; 0.05, |log2FC| ≥ 0.585, and every infected sample at least 1.5-fold from the healthy mean in the same direction. The NeuroVIP and classic runs have no per-sample data, so their selection is padj ≤ 0.05 and |FC| ≥ 1.5.</li>
+        <li><b>Over-representation</b>: hypergeometric test against all genes tested, BH-corrected within each database, as in KOBAS. <b>Direction</b>: binomial test of whether the selected genes in a pathway lean up or down more than all selected genes.</li>
+        <li>Gene sets are the current official releases (KEGG REST, PANTHER 3.6.8, Reactome lowest-level mouse pathways), downloaded by the script. The paper used the 2019 releases, so pathway membership, names and rankings differ somewhat.</li>
+        <li>★ marks pathways on the x-axis of the paper's Fig. 6e (PANTHER) or 6f (KEGG); bold names are also named in the Results text or marked with an arrow. Those labels were read from the published figure. The Reactome results (Supp. Fig. 9) were not available for comparison.</li>
+        <li>The "Literature" panels are BBB gene groups curated for this dashboard (gene lists in the script). They are not part of the paper.</li>
+      </ul>
+    </details>
+
+    <div class="bx-card" id="card-cl-path">
+      <h2 class="bx-card-title">Pathway enrichment (paper Fig. 6e–f)</h2>
+      <p class="bx-card-note"><span data-draw="cl-path-note"></span> Bar length = over-representation significance; colour = direction of the selected genes (red mostly up, blue mostly down). Labels = selected / tested pathway genes. Dashed line q = 0.05. Click a pathway to list its genes.</p>
+      <div class="bx-controls bx-controls-inline">
+        <div class="bx-seg" role="group" aria-label="Database">
+          <span class="bx-seg-label">Database:</span>
+          <button class="bx-seg-btn" data-cldb="KEGG">KEGG</button>
+          <button class="bx-seg-btn" data-cldb="PANTHER">PANTHER</button>
+          <button class="bx-seg-btn" data-cldb="Reactome">Reactome</button>
+          <button class="bx-seg-btn" data-cldb="Literature">Literature panels</button>
+        </div>
+        <div class="bx-seg" role="group" aria-label="Filter">
+          <span class="bx-seg-label">Show:</span>
+          <button class="bx-seg-btn" data-clpaper="all">All</button>
+          <button class="bx-seg-btn" data-clpaper="paper">In the paper ★</button>
+        </div>
+      </div>
+      <div class="bx-chart bx-chart-clpath" data-draw="cl-path-chart" data-source="cl_pathways"></div>
+      <div class="bx-scroll bx-scroll-tall">
+        <table class="bx-table bx-selectable" data-source="cl_pathways" data-row-key="pathway_id">
+          <thead><tr>
+            <th data-field="pathway">Pathway</th><th data-field="paper">In the paper</th>
+            <th data-field="n_sig" class="bx-num">Selected / tested</th><th data-field="n_up" class="bx-num">Up / down</th>
+            <th data-field="fold_enrichment" class="bx-num">Fold enrichment</th><th data-field="q_enrich" class="bx-num">q (enrichment)</th>
+            <th data-field="direction">Direction</th><th data-field="q_direction" class="bx-num">q (direction)</th>
+          </tr></thead>
+          <tbody data-draw="cl-path-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bx-card" id="card-cl-members">
+      <h2 class="bx-card-title">Genes in the selected pathway</h2>
+      <div class="bx-controls bx-controls-inline">
+        <label class="bx-seg-label" for="cl-panel-select">Pathway:</label>
+        <select id="cl-panel-select" class="bx-select" data-draw="cl-panel-select" data-source="cl_pathways"></select>
+      </div>
+      <p class="bx-card-note" data-draw="cl-panel-info"></p>
+      <div class="bx-scroll bx-scroll-tall">
+        <table class="bx-table bx-clickable" data-source="cl_pathway_genes" data-row-key="pathway_id,gene_id">
+          <thead><tr><th data-field="symbol">Gene</th><th data-field="log2fc" class="bx-num">log2FC (selected run)</th><th data-field="padj" class="bx-num">padj</th><th data-field="call">Call at paper thresholds</th><th data-field="pa_all4">All four infected samples</th></tr></thead>
+          <tbody data-draw="cl-members-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== MACHINE LEARNING ===================== -->
   <section class="bx-page" id="ml" data-page="ml" hidden>
     <div>
@@ -387,6 +590,7 @@
           <tr><td>Gene search</td><td>Look up any gene across all three diseases (also available from the search box at the top).</td></tr>
           <tr><td>Shared genes</td><td>Find genes changed in several diseases and whether they move in the same direction.</td></tr>
           <tr><td>Pipeline validation</td><td>Compare the NeuroVIP pipeline with the laboratory's classic analysis.</td></tr>
+          <tr><td>Classical analysis</td><td>Reproduce the meningitis RNA-seq analysis of Devraj et al. 2020 from the study's published count matrix (DESeq2 with the paper's thresholds, PCA, sample clustering, top-25 heatmap, read counts of HIF-1α/VEGF and BBB genes, KEGG / PANTHER / Reactome enrichment) and compare each result with the paper.</td></tr>
           <tr><td>Machine learning</td><td>Review exploratory classifiers and their most informative genes.</td></tr>
         </tbody>
       </table>
@@ -419,5 +623,6 @@
 <script src="js/core.js"></script>
 <script src="js/draw-a.js"></script>
 <script src="js/draw-b.js"></script>
+<script src="js/draw-c.js"></script>
 </body>
 </html>

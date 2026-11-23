@@ -174,7 +174,7 @@ dash.calc('concord', {
 
 // ---------- tabs and controls (listen + set attributes only) ----------
 (function () {
-  const TABS = ['overview', 'de', 'gene', 'cross', 'check', 'ml', 'help'];
+  const TABS = ['overview', 'de', 'gene', 'cross', 'check', 'classical', 'ml', 'help'];
   const startTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : null;
   if (startTab) dash.setParams({ tab: startTab });
 

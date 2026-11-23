@@ -1,0 +1,8 @@
+analysis,source,tkey,threshold,n_up,n_down,genes_tested,n_total,pct_up,pct_down,diff_up_pct,diff_down_pct
+"Paper counts (GEO), DESeq2 here",pa,padj,padj ≤ 0.05,4397,4382,16362,8779,26.9,26.8,0.3,0.6
+"Paper counts (GEO), DESeq2 here",pa,strict,padj ≤ 0.05 and |FC| ≥ 1.5,3318,3095,16362,6413,20.3,18.9,-24.3,-28.9
+NeuroVIP pipeline,nv,padj,padj ≤ 0.05,4725,4566,22436,9291,21.1,20.4,7.8,4.9
+NeuroVIP pipeline,nv,strict,padj ≤ 0.05 and |FC| ≥ 1.5,3731,3385,22436,7116,16.6,15.1,-14.9,-22.3
+Classic analysis,cl,padj,padj ≤ 0.05,4344,4213,22436,8557,19.4,18.8,-0.9,-3.2
+Classic analysis,cl,strict,padj ≤ 0.05 and |FC| ≥ 1.5,3497,3215,22436,6712,15.6,14.3,-20.2,-26.2
+Devraj et al. 2020 (reported),paper,reported,"as reported (Results, Fig. 6b)",4382,4354,21406,8736,20.5,20.3,0,0

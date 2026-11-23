@@ -1,0 +1,20 @@
+symbol,paper_label,category,paper_claim,paper_source,gene_id,pa_log2fc,pa_padj,pa_observed,pa_agreement,pa_passes_fc,nv_log2fc,nv_padj,nv_observed,nv_agreement,nv_passes_fc,cl_log2fc,cl_padj,cl_observed,cl_agreement,cl_passes_fc
+Hif1a,HIF-1α,HIF-1α / VEGF axis,up,"Fig. 6d, Results",ENSMUSG00000021109,2.46247,4.60424e-43,up,agrees,True,2.475,1.58e-45,up,agrees,True,2.4744,2.92e-46,up,agrees,True
+Vegfa,VEGF,HIF-1α / VEGF axis,up,"Fig. 6d, Results",ENSMUSG00000023951,0.848623,0.00199202,up,agrees,True,0.8007,0.00399,up,agrees,True,0.802,0.00707,up,agrees,True
+Angpt2,ANGPT2,Angiopoietin–Tie2,up,"Fig. 6d, Results",ENSMUSG00000031465,4.21033,1.87737e-70,up,agrees,True,4.2088,1.67e-70,up,agrees,True,4.2091,1.55e-71,up,agrees,True
+Tek,Tie2,Angiopoietin–Tie2,down,Fig. 6d,ENSMUSG00000006386,-3.00587,1.65691e-50,down,agrees,True,-3.0072,3.85e-50,down,agrees,True,-3.0073,6.42e-51,down,agrees,True
+Ptprb,PTPRB (VE-PTP),Angiopoietin–Tie2,down,Fig. 6c ('dysregulated' in Results),ENSMUSG00000020154,-3.75727,1.71433e-95,down,agrees,True,-3.7607,1e-94,down,agrees,True,-3.7615,8.52e-97,down,agrees,True
+Il1b,IL-1β,Inflammation,up,"Fig. 6d, Results",ENSMUSG00000027398,5.87384,2.1058e-15,up,agrees,True,5.8436,1.12e-15,up,agrees,True,5.8431,1.99e-15,up,agrees,True
+Tnf,TNF-α,Inflammation,up,"Results, Discussion",ENSMUSG00000024401,8.03697,6.40538e-16,up,agrees,True,8.076,2.66e-26,up,agrees,True,8.0756,5.32e-26,up,agrees,True
+Snai1,Snail,EndMT,up,Discussion ('twofold upregulation'),ENSMUSG00000042821,1.26712,9.60709e-07,up,agrees,True,1.2716,4.15e-07,up,agrees,True,1.271,9.46e-07,up,agrees,True
+Cldn5,Claudin-5,BBB junctions,down,"Fig. 6d, Results",ENSMUSG00000041378,-1.05053,2.51177e-05,down,agrees,True,-1.0532,2.86e-05,down,agrees,True,-1.0536,3.99e-05,down,agrees,True
+Ocln,Occludin,BBB junctions,down,"Fig. 6d, Results",ENSMUSG00000021638,-1.17892,4.12325e-12,down,agrees,True,-1.1854,8.71e-12,down,agrees,True,-1.1854,8.47e-12,down,agrees,True
+Tjp1,ZO-1,BBB junctions,down,"Fig. 6d, Results",ENSMUSG00000030516,-1.21293,2.20627e-27,down,agrees,True,-1.216,9.54e-26,down,agrees,True,-1.2166,3.28e-26,down,agrees,True
+Cav1,Caveolin-1,BBB transcytosis,down,Discussion ('potentially compensatory decrease'),ENSMUSG00000007655,-2.37786,1.42139e-33,down,agrees,True,-2.3918,6.95e-34,down,agrees,True,-2.3923,2.41e-34,down,agrees,True
+Plvap,PLVAP,BBB transcytosis,unchanged,Discussion,ENSMUSG00000034845,-0.645031,0.435001,n.s.,agrees,False,,,n.s.,agrees,False,,,n.s.,agrees,False
+Pecam1,PECAM-1 / CD31,Endothelial markers,down,Fig. 6d,ENSMUSG00000020717,-1.10141,4.66011e-17,down,agrees,True,-1.1021,2.5e-16,down,agrees,True,-1.1025,1.87e-16,down,agrees,True
+Vwf,vWF,Endothelial markers,unchanged,Fig. 6d (n.s.),ENSMUSG00000001930,-0.449444,0.0538841,n.s.,agrees,False,,,n.s.,agrees,False,,,n.s.,agrees,False
+Cdh5,VE-cadherin,Endothelial markers,marker,Methods (IF marker),ENSMUSG00000031871,0.80832,5.41076e-06,up,—,True,0.8028,8.62e-06,up,—,True,0.8022,1.14e-05,up,—,True
+Rplp0,RPLP0,Reference genes,housekeeping,"Methods (qRT-PCR, cultured cells)",ENSMUSG00000067274,-0.300075,0.0231469,down,changed,False,,,n.s.,stable,False,,,n.s.,stable,False
+G6pdx,G6PDX,Reference genes,housekeeping,"Methods (qRT-PCR, cultured cells)",ENSMUSG00000031400,0.575659,3.24134e-06,up,changed,False,0.5646,1.05e-05,up,changed,False,0.5634,1.6e-05,up,changed,False
+Actb,β-actin,Reference genes,housekeeping,Methods (Western blot loading control),ENSMUSG00000029580,1.20396,4.77465e-09,up,changed,True,1.2024,6.59e-09,up,changed,True,1.2016,7.53e-09,up,changed,True
